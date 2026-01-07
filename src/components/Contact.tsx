@@ -48,22 +48,22 @@ export const Contact: React.FC = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com',
+      value: 'dominhduy09@gmail.com',
+      href: 'mailto:dominhduy09@gmail.com',
       color: 'from-red-600 to-pink-600',
     },
     {
       icon: Github,
       label: 'GitHub',
-      value: 'github.com/yourname',
-      href: 'https://github.com/yourname',
+      value: 'github.com/dominhduy09',
+      href: 'https://github.com/dominhduy09',
       color: 'from-gray-600 to-gray-800',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'linkedin.com/in/yourname',
-      href: 'https://linkedin.com/in/yourname',
+      value: 'linkedin.com/in/duy-do-minh-0b37501a9',
+      href: 'https://www.linkedin.com/in/duy-do-minh-0b37501a9/',
       color: 'from-blue-600 to-cyan-600',
     },
   ];
@@ -135,7 +135,7 @@ export const Contact: React.FC = () => {
                   {[
                     { icon: Github, label: 'GitHub', href: 'https://github.com/dominhduy09' },
                     { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/duy-do-minh-0b37501a9/' },
-                    { icon: Mail, label: 'Email', href: 'mailto:your.email@example.com' },
+                    { icon: Mail, label: 'Email', href: 'mailto:dominhduy09@gmail.com' },
                   ].map((social, idx) => {
                     const Icon = social.icon;
                     return (
@@ -178,7 +178,7 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
-                    placeholder="Your name"
+                    placeholder="What is your name?"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
-                    placeholder="your.email@example.com"
+                    placeholder="What is your email?"
                   />
                 </div>
 
@@ -212,7 +212,7 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
-                    placeholder="What's this about?"
+                    placeholder="What is this about?"
                   />
                 </div>
 
@@ -229,7 +229,7 @@ export const Contact: React.FC = () => {
                     required
                     rows={5}
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all resize-none"
-                    placeholder="Your message..."
+                    placeholder="What is your message?"
                   />
                 </div>
 
