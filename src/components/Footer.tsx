@@ -32,7 +32,12 @@ export const Footer: React.FC = () => {
           >
             <h4 className="font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              {['Home', 'About', 'Skills', 'Projects', 'Experience'].map(item => (
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Home
+                </a>
+              </li>
+              {['About', 'Skills', 'Projects', 'Experience'].map(item => (
                 <li key={item}>
                   <a href={`#${item.toLowerCase()}`} className="hover:text-white transition-colors">
                     {item}
