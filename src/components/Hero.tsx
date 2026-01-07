@@ -5,10 +5,11 @@ import { Slideshow } from './Slideshow';
 export const Hero: React.FC = () => {
   // Slideshow images - you can replace these with your own images
   const slideshowImages = [
-    'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&q=80', // Coding workspace
-    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80', // Tech background
-    'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&q=80', // Programming
-    'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=1920&q=80', // Technology
+    '/images/slideshow/slide-1.png',
+    '/images/slideshow/slide-2.png',
+    '/images/slideshow/slide-3.png',
+    '/images/slideshow/slide-4.png',
+    '/images/slideshow/slide-5.png',
   ];
 
   const containerVariants = {
