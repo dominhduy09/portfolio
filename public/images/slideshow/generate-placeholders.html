@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<canvas id="canvas" width="1920" height="1080"></canvas>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const colors = [
+  {bg: '#1e3a8a', accent: '#3b82f6', name: 'Code'},
+  {bg: '#4c1d95', accent: '#8b5cf6', name: 'Design'},
+  {bg: '#065f46', accent: '#10b981', name: 'Build'},
+  {bg: '#7c2d12', accent: '#f97316', name: 'Deploy'},
+  {bg: '#831843', accent: '#ec4899', name: 'Create'}
+];
+
+colors.forEach((color, i) => {
+  ctx.fillStyle = color.bg;
+  ctx.fillRect(0, 0, 1920, 1080);
+  
+  ctx.fillStyle = color.accent;
+  ctx.font = 'bold 200px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(color.name, 960, 540);
+  
+  ctx.font = '60px Arial';
+  ctx.fillText('Portfolio Background ' + (i + 1), 960, 720);
+  
+  const link = document.createElement('a');
+  link.download = `slide-${i + 1}.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+});
+</script>
+</body>
+</html>
