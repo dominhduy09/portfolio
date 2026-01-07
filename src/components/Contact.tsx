@@ -233,7 +233,7 @@ export const Contact: React.FC = () => {
                     required
                     disabled={isLoading}
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="Your name"
+                    placeholder="What is your name?"
                   />
                 </div>
 
@@ -249,7 +249,7 @@ export const Contact: React.FC = () => {
                     required
                     disabled={isLoading}
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="your.email@example.com"
+                    placeholder="What is your email?"
                   />
                 </div>
 
@@ -265,7 +265,7 @@ export const Contact: React.FC = () => {
                     required
                     disabled={isLoading}
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="What's this about?"
+                    placeholder="What is the subject?"
                   />
                 </div>
 
@@ -281,7 +281,7 @@ export const Contact: React.FC = () => {
                     disabled={isLoading}
                     rows={5}
                     className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
-                    placeholder="Your message..."
+                    placeholder="What is your message?"
                   />
                 </div>
 
