@@ -10,6 +10,11 @@ export const Hero: React.FC = () => {
     '/images/slideshow/slide-3.png',
     '/images/slideshow/slide-4.png',
     '/images/slideshow/slide-5.png',
+    '/images/slideshow/slide-6.png',
+    '/images/slideshow/slide-7.png',
+    '/images/slideshow/slide-8.png',
+    '/images/slideshow/slide-9.png',
+    '/images/slideshow/slide-10.png',
   ];
 
   const containerVariants = {
