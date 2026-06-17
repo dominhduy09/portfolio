@@ -23,6 +23,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',

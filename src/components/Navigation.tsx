@@ -3,7 +3,11 @@ import { Github, Linkedin, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useEffect, useState } from 'react';
 
-export const Navigation: React.FC = () => {
+interface NavigationProps {
+  onViewV2?: () => void;
+}
+
+export const Navigation: React.FC<NavigationProps> = ({ onViewV2 }) => {
   const { isDark, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('about');
 
@@ -91,6 +95,17 @@ export const Navigation: React.FC = () => {
 
           {/* Theme Toggle & Social */}
           <div className="flex items-center gap-4">
+            {onViewV2 && (
+              <motion.button
+                onClick={onViewV2}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800 text-xs font-semibold"
+              >
+                V2 Lab 🔬
+              </motion.button>
+            )}
+
             <motion.button
               onClick={toggleTheme}
               whileHover={{ scale: 1.1 }}

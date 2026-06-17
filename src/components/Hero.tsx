@@ -2,7 +2,11 @@ import { motion } from 'framer-motion';
 import { Download, Github, Linkedin, Mail } from 'lucide-react';
 import { Slideshow } from './Slideshow';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onViewV2?: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onViewV2 }) => {
   // Slideshow images - you can replace these with your own images
   const slideshowImages = [
     '/images/slideshow/slide-1.png',
@@ -89,6 +93,17 @@ export const Hero: React.FC = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
           >
+            {onViewV2 && (
+              <motion.button
+                onClick={onViewV2}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 border border-indigo-500 shadow-lg shadow-indigo-600/20"
+              >
+                Enter V2 Lab 🔬
+              </motion.button>
+            )}
+
             <motion.a
               href="#projects"
               whileHover={{ scale: 1.05 }}
