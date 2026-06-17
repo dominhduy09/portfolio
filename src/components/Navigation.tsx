@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useEffect, useState } from 'react';
 
 export const Navigation: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState('about');
 
   const navItems = [
     { label: 'About', href: '#about' },
@@ -12,6 +14,34 @@ export const Navigation: React.FC = () => {
     { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ];
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all sections
+    navItems.forEach((item) => {
+      const element = document.querySelector(item.href);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.nav
@@ -33,16 +63,30 @@ export const Navigation: React.FC = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                whileHover={{ color: '#3b82f6' }}
-                className="text-gray-700 dark:text-gray-300 text-sm font-medium transition-colors"
-              >
-                {item.label}
-              </motion.a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  whileHover={{ color: '#3b82f6' }}
+                  className={`text-sm font-medium transition-colors relative pb-1 ${
+                    isActive
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-700 dark:text-gray-300'
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeSection"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </motion.a>
+              );
+            })}
           </div>
 
           {/* Theme Toggle & Social */}
