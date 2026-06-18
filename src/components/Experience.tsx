@@ -124,19 +124,19 @@ export const Experience: React.FC = () => {
           </motion.div>
 
           {/* Timeline */}
-          <div className="space-y-8">
+          <div className="relative border-l-2 border-gray-200 dark:border-dark-700 ml-4 md:ml-8 space-y-8 py-2">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ translateX: 5 }}
-                className="group relative"
+                className="group relative pl-6 md:pl-8"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 top-6 w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transform -translate-x-6 border-4 border-white dark:border-dark-800" />
+                <div className="absolute -left-[9px] top-6 w-4 h-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full border-4 border-white dark:border-dark-800 z-10 transition-transform duration-300 group-hover:scale-125" />
 
                 {/* Content */}
-                <div className="ml-4 p-6 rounded-lg bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-lg transition-shadow">
+                <div className="p-6 rounded-2xl bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-lg dark:hover:shadow-xl transition-all duration-300">
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
                     <div>

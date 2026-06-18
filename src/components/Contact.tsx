@@ -192,16 +192,16 @@ export const Contact: React.FC = () => {
             {/* Contact Form */}
             <motion.div
               variants={itemVariants}
-              className="p-8 rounded-lg bg-gray-50 dark:bg-dark-800 border border-gray-200 dark:border-dark-700"
+              className="p-8 rounded-2xl bg-gray-50 dark:bg-dark-800/40 border border-gray-200 dark:border-dark-700 shadow-sm relative overflow-hidden"
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 font-display">Send Me a Message</h3>
 
               {/* Status Messages */}
               {status === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-4 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400"
+                  className="mb-4 p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 font-semibold"
                 >
                   ✓ Message sent successfully! I'll get back to you soon.
                 </motion.div>
@@ -211,19 +211,19 @@ export const Contact: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-4 p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400"
+                  className="mb-4 p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 font-semibold"
                 >
                   ✗ {errorMessage}
                 </motion.div>
               )}
 
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 {/* Hidden time field for EmailJS */}
                 <input type="hidden" name="time" />
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="from_name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="from_name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-display">
                     Name *
                   </label>
                   <input
@@ -232,14 +232,14 @@ export const Contact: React.FC = () => {
                     name="from_name"
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-sans text-sm"
                     placeholder="What is your name?"
                   />
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="reply_to" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="reply_to" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-display">
                     Email *
                   </label>
                   <input
@@ -248,14 +248,14 @@ export const Contact: React.FC = () => {
                     name="reply_to"
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-sans text-sm"
                     placeholder="What is your email?"
                   />
                 </div>
 
                 {/* Subject */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-display">
                     Subject *
                   </label>
                   <input
@@ -264,14 +264,14 @@ export const Contact: React.FC = () => {
                     name="subject"
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-sans text-sm"
                     placeholder="What is the subject?"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 font-display">
                     Message *
                   </label>
                   <textarea
@@ -280,7 +280,7 @@ export const Contact: React.FC = () => {
                     required
                     disabled={isLoading}
                     rows={5}
-                    className="w-full px-4 py-2 rounded-lg bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-dark-700 border border-gray-300 dark:border-dark-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 resize-none disabled:opacity-50 disabled:cursor-not-allowed font-sans text-sm"
                     placeholder="What is your message?"
                   />
                 </div>
@@ -291,10 +291,10 @@ export const Contact: React.FC = () => {
                   disabled={isLoading}
                   whileHover={!isLoading ? { scale: 1.02 } : {}}
                   whileTap={!isLoading ? { scale: 0.98 } : {}}
-                  className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all ${
+                  className={`w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-all cursor-pointer font-display ${
                     isLoading
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg'
                   }`}
                 >
                   {isLoading ? (
@@ -307,7 +307,7 @@ export const Contact: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <Send size={20} />
+                      <Send size={16} />
                       Send Message
                     </>
                   )}

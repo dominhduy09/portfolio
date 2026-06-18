@@ -91,14 +91,14 @@ export const Hero: React.FC<HeroProps> = ({ onViewV2 }) => {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
           >
             {onViewV2 && (
               <motion.button
                 onClick={onViewV2}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2 border border-indigo-500 shadow-lg shadow-indigo-600/20"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 border border-indigo-500 shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35 cursor-pointer font-display"
               >
                 Enter V2 Lab 🔬
               </motion.button>
@@ -106,32 +106,34 @@ export const Hero: React.FC<HeroProps> = ({ onViewV2 }) => {
 
             <motion.a
               href="#projects"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/10 hover:shadow-blue-600/25 cursor-pointer font-display"
             >
               View My Projects
             </motion.a>
+          </motion.div>
 
-            <motion.a
+          {/* Secondary links */}
+          <motion.div
+            variants={itemVariants}
+            className="flex gap-6 justify-center items-center mb-12 text-sm font-medium"
+          >
+            <a
               href="/cv/Minh_Duy_Do_Resume.pdf"
               download
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gray-100 dark:bg-dark-800 hover:bg-gray-200 dark:hover:bg-dark-700 text-gray-900 dark:text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
-              <Download size={20} />
+              <Download size={16} />
               Download CV
-            </motion.a>
-
-            <motion.a
+            </a>
+            <span className="text-gray-300 dark:text-gray-700 select-none">•</span>
+            <a
               href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-semibold rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
             >
               Let's Talk
-            </motion.a>
+            </a>
           </motion.div>
 
           {/* Social Links */}

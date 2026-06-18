@@ -144,16 +144,16 @@ export const Projects: React.FC = () => {
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ translateY: -8 }}
-                className="group"
+                className="group h-full"
               >
-                <div className="h-full rounded-lg overflow-hidden bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300">
+                <div className="h-full rounded-2xl overflow-hidden bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 flex flex-col">
                   {/* Project Image / Placeholder */}
-                  <div className="relative w-full h-48 overflow-hidden">
+                  <div className="relative w-full h-48 overflow-hidden bg-gray-50 dark:bg-dark-900">
                     {project.image ? (
                       <img
                         src={project.image}
                         alt={`${project.title} cover`}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                         onError={(e) => {
                           const target = e.currentTarget;
                           target.style.display = 'none';
@@ -165,7 +165,7 @@ export const Projects: React.FC = () => {
                       <div className="w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
                         <div className="text-center px-4">
                           <div className="text-4xl mb-2">💻</div>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">{project.title}</p>
+                          <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 font-display">{project.title}</p>
                         </div>
                       </div>
                     )}
@@ -175,21 +175,21 @@ export const Projects: React.FC = () => {
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 font-display">
                       {project.title}
                     </h3>
 
-                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-5 line-clamp-3 font-sans leading-relaxed flex-1">
                       {project.description}
                     </p>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-6">
                       {project.tags.map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 rounded-full text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800"
+                          className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-gray-50 dark:bg-dark-900 text-gray-600 dark:text-gray-400 border border-gray-150 dark:border-dark-700 font-mono"
                         >
                           {tag}
                         </span>
@@ -197,17 +197,17 @@ export const Projects: React.FC = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 mt-auto">
                       <motion.a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-dark-700 hover:bg-gray-200 dark:hover:bg-dark-600 text-gray-700 dark:text-gray-300 font-medium transition-colors"
+                        whileHover={{ scale: 1.02, y: -1 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-dark-700 hover:bg-gray-200 dark:hover:bg-dark-600 text-gray-700 dark:text-gray-300 font-semibold text-sm transition-all cursor-pointer font-display"
                         aria-label={`View ${project.title} on GitHub`}
                       >
-                        <Github size={16} />
+                        <Github size={15} />
                         Code
                       </motion.a>
 
@@ -216,12 +216,12 @@ export const Projects: React.FC = () => {
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
+                          whileHover={{ scale: 1.02, y: -1 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-all cursor-pointer font-display shadow-sm"
                           aria-label={`View ${project.title} demo`}
                         >
-                          <ExternalLink size={16} />
+                          <ExternalLink size={15} />
                           Demo
                         </motion.a>
                       )}
