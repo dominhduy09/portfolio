@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface SlideshowProps {
   images: string[];
@@ -18,6 +19,14 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, interval = 5000 })
 
     return () => clearInterval(timer);
   }, [images.length, interval]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -40,6 +49,26 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, interval = 5000 })
           <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/90 dark:from-dark-900/95 dark:via-dark-900/90 dark:to-dark-900/95" />
         </motion.div>
       </AnimatePresence>
+
+      {/* Navigation Buttons */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 text-gray-800 dark:text-white backdrop-blur-sm transition-all hover:scale-110 active:scale-90 z-20 cursor-pointer"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 text-gray-800 dark:text-white backdrop-blur-sm transition-all hover:scale-110 active:scale-90 z-20 cursor-pointer"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </>
+      )}
 
       {/* Navigation Dots */}
       {images.length > 1 && (
