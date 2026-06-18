@@ -104,7 +104,7 @@ export const Experience: React.FC = () => {
     <section
       id="experience"
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-dark-800"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-dark-800/40 backdrop-blur-[2px]"
     >
       <div className="max-w-4xl mx-auto">
         <motion.div

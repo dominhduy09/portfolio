@@ -118,7 +118,7 @@ export const Projects: React.FC = () => {
     <section
       id="projects"
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-900 border-b border-gray-200 dark:border-dark-800"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-dark-900/40 backdrop-blur-[2px] border-b border-gray-200 dark:border-dark-800"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div

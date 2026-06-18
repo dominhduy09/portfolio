@@ -10,7 +10,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 dark:bg-dark-900 text-gray-800 dark:text-gray-300 border-t border-gray-200 dark:border-dark-800">
+    <footer className="bg-gray-50/80 dark:bg-dark-900/80 backdrop-blur-md text-gray-800 dark:text-gray-300 border-t border-gray-200 dark:border-dark-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Footer Content */}
         <div className="grid md:grid-cols-4 gap-12 mb-12">
