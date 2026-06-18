@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   Terminal,
@@ -242,10 +242,19 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
     'GPA 3.88 validated successfully.',
     'Click on any blueprint node below to inspect architecture details.'
   ]);
+  const [commandInput, setCommandInput] = useState('');
+  const consoleContainerRef = useRef<HTMLDivElement>(null);
 
   // Terminal compiler typing effect simulation
   const [compileProgress, setCompileProgress] = useState(0);
   const [isCompiling, setIsCompiling] = useState(false);
+
+  // Auto scroll terminal to bottom
+  useEffect(() => {
+    if (consoleContainerRef.current) {
+      consoleContainerRef.current.scrollTop = consoleContainerRef.current.scrollHeight;
+    }
+  }, [terminalLogs, isCompiling]);
 
   // Contact Form State
   const [emailInput, setEmailInput] = useState('');
@@ -270,6 +279,77 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
 
     return () => clearInterval(logInterval);
   }, []);
+
+  const handleCommandSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cleanCmd = commandInput.trim().toLowerCase();
+    if (!cleanCmd) return;
+
+    setTerminalLogs(prev => [...prev, `guest@duy:~$ ${commandInput}`]);
+    setCommandInput('');
+
+    switch (cleanCmd) {
+      case 'help':
+        setTerminalLogs(prev => [
+          ...prev,
+          'Available commands:',
+          '  help        - Display this suggestions guide',
+          '  about       - Read short developer profile overview',
+          '  skills      - Retrieve core expertise matrices',
+          '  projects    - Show featured systems build details',
+          '  diagnostic  - Run diagnostic compiler health check',
+          '  clear       - Clear terminal console records',
+          '  exit        - Return to Classic V1 layout version'
+        ]);
+        break;
+      case 'clear':
+        setTerminalLogs([]);
+        break;
+      case 'about':
+        setTerminalLogs(prev => [
+          ...prev,
+          '>> IDENTITY: MINH DUY DO | SYSTEMS LAB TELEMETRY v2.0',
+          '>> ROLE: Software Engineer & Computer Science Student',
+          '>> INSTITUTION: University of Alabama at Birmingham (GPA: 3.88)',
+          '>> DOMAIN: Full-Stack Web Development, System Architecture, AI/ML'
+        ]);
+        break;
+      case 'skills':
+        setTerminalLogs(prev => [
+          ...prev,
+          '>> MATRICES DATA DECODED:',
+          '  - languages   :: C++, Java, Python, JavaScript, TypeScript, SQL',
+          '  - frontend    :: React 19, Tailwind CSS v4, TanStack, HTML5/CSS3',
+          '  - system/infra:: Node.js, Express, Supabase, Docker, Linux, AWS'
+        ]);
+        break;
+      case 'projects':
+        setTerminalLogs(prev => [
+          ...prev,
+          '>> RUNNING PROJECTS REGISTRIES:',
+          '  - PulseCheck  :: Clinical Note Assistant (Lovable, React 19, Cloudflare)',
+          '  - California  :: California Housing Market Price Analytics (Google Maps)',
+          '  - ChainScope  :: Multichain Explorer Explorer (Blockchair APIs, Supabase)',
+          '  - extensions  :: Pomodoro MV3 Timer & Advanced Cookie Managers'
+        ]);
+        break;
+      case 'diagnostic':
+        runCompilerDiagnostic();
+        break;
+      case 'exit':
+        setTerminalLogs(prev => [...prev, '>> Executing exit sequence...']);
+        setTimeout(() => {
+          onViewClassic();
+        }, 1000);
+        break;
+      default:
+        setTerminalLogs(prev => [
+          ...prev,
+          `>> unknown CLI instruction: '${cleanCmd}'`,
+          `>> Type 'help' to query directory commands.`
+        ]);
+    }
+  };
 
   const handleNodeClick = (node: typeof SCHEMA_NODES[0]) => {
     setSelectedNode(node);
@@ -441,9 +521,12 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
                 </div>
                 <div>SYSTEM LOGS</div>
               </div>
-              <div className="p-4 flex-1 text-xs space-y-1.5 overflow-y-auto font-mono scrollbar-thin scrollbar-thumb-gray-800">
+              <div 
+                ref={consoleContainerRef}
+                className="p-4 flex-1 text-xs space-y-1.5 overflow-y-auto font-mono scrollbar-thin scrollbar-thumb-gray-800"
+              >
                 {terminalLogs.map((log, idx) => (
-                  <div key={idx} className="leading-relaxed">
+                  <div key={idx} className="leading-relaxed whitespace-pre-wrap">
                     {log}
                   </div>
                 ))}
@@ -455,6 +538,19 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
                     ></div>
                   </div>
                 )}
+                
+                {/* Interactive Prompt Input */}
+                <form onSubmit={handleCommandSubmit} className="flex items-center gap-1.5 pt-1.5 border-t border-gray-800/40 text-[11px]">
+                  <span className="text-indigo-400 font-bold shrink-0">guest@duy:~$</span>
+                  <input
+                    type="text"
+                    value={commandInput}
+                    onChange={(e) => setCommandInput(e.target.value)}
+                    disabled={isCompiling}
+                    className="flex-1 bg-transparent border-none outline-none focus:ring-0 p-0 text-[11px] text-emerald-400 font-mono"
+                    placeholder="type 'help'..."
+                  />
+                </form>
               </div>
             </div>
 
@@ -486,23 +582,57 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
                         className="cursor-pointer group"
                         onClick={() => handleNodeClick(node)}
                       >
-                        {/* Hover ring */}
-                        <circle
-                          cx={node.x}
-                          cy={node.y}
-                          r={isSelected ? 30 : 25}
-                          fill="transparent"
-                          stroke={isSelected ? '#FF6B35' : '#4F46E5'}
-                          strokeWidth="2"
-                          className="transition-all duration-300 group-hover:r-30"
-                        />
-                        {/* Center core */}
+                        {/* Pulse effect for selected node */}
+                        {isSelected && (
+                          <circle
+                            cx={node.x}
+                            cy={node.y}
+                            r="32"
+                            fill="none"
+                            stroke="#FF6B35"
+                            strokeWidth="1.5"
+                            className="animate-ping opacity-45"
+                            style={{
+                              transformOrigin: `${node.x}px ${node.y}px`,
+                              animationDuration: '2.5s',
+                            }}
+                          />
+                        )}
+
+                        {/* Glowing core background aura */}
                         <circle
                           cx={node.x}
                           cy={node.y}
                           r="16"
-                          className={`transition-colors duration-300 ${isSelected ? 'fill-orange-500' : 'fill-indigo-600 dark:fill-indigo-950 group-hover:fill-indigo-500'
-                            }`}
+                          className={`transition-all duration-300 blur-[4px] opacity-70 ${
+                            isSelected ? 'fill-orange-400 animate-pulse' : 'fill-transparent group-hover:fill-indigo-400/30'
+                          }`}
+                        />
+
+                        {/* Outer border ring */}
+                        <circle
+                          cx={node.x}
+                          cy={node.y}
+                          r={isSelected ? 26 : 22}
+                          fill="transparent"
+                          stroke={isSelected ? '#FF6B35' : '#4F46E5'}
+                          strokeWidth="2"
+                          className="transition-all duration-300 group-hover:scale-105"
+                          style={{
+                            transformOrigin: `${node.x}px ${node.y}px`,
+                          }}
+                        />
+
+                        {/* Center core */}
+                        <circle
+                          cx={node.x}
+                          cy={node.y}
+                          r="14"
+                          className={`transition-colors duration-300 ${
+                            isSelected 
+                              ? 'fill-orange-500' 
+                              : 'fill-indigo-600 dark:fill-indigo-950 group-hover:fill-indigo-500'
+                          }`}
                           stroke={isSelected ? '#FFFFFF' : '#4F46E5'}
                           strokeWidth="2"
                         />
@@ -512,8 +642,11 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
                           x={node.x}
                           y={node.y + (isSelected ? 45 : 38)}
                           textAnchor="middle"
-                          className={`text-[9px] font-mono font-bold tracking-wide uppercase transition-colors ${isSelected ? 'fill-orange-500' : 'fill-gray-600 dark:fill-gray-400 group-hover:fill-gray-900 dark:group-hover:fill-white'
-                            }`}
+                          className={`text-[9px] font-mono font-bold tracking-wide uppercase transition-colors ${
+                            isSelected 
+                              ? 'fill-orange-500' 
+                              : 'fill-gray-600 dark:fill-gray-400 group-hover:fill-gray-900 dark:group-hover:fill-white'
+                          }`}
                         >
                           {node.name.split(' ')[0]}
                         </text>
