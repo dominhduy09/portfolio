@@ -23,6 +23,8 @@ import { useTheme } from '../context/ThemeContext';
 
 interface NewPortfolioProps {
   onViewClassic: () => void;
+  onOpenPrivacy?: () => void;
+  onOpenTerms?: () => void;
 }
 
 // Concrete data mirroring the portfolio contents
@@ -224,7 +226,11 @@ const SCHEMA_NODES = [
   }
 ];
 
-export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => {
+export const NewPortfolio: React.FC<NewPortfolioProps> = ({
+  onViewClassic,
+  onOpenPrivacy,
+  onOpenTerms,
+}) => {
   const { isDark, toggleTheme } = useTheme();
 
   // Interactive nodes state
@@ -858,8 +864,20 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
           <div className="flex items-center gap-6">
             <span>Lat: 37.7749 / Lng: -122.4194</span>
             <button
+              onClick={onOpenPrivacy}
+              className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer bg-transparent border-none font-bold"
+            >
+              [Privacy]
+            </button>
+            <button
+              onClick={onOpenTerms}
+              className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer bg-transparent border-none font-bold"
+            >
+              [Terms]
+            </button>
+            <button
               onClick={onViewClassic}
-              className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline bg-transparent border-none"
+              className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline bg-transparent border-none cursor-pointer"
             >
               [Return to Classic Version]
             </button>

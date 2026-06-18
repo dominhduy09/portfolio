@@ -1,7 +1,12 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenPrivacy?: () => void;
+  onOpenTerms?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -110,8 +115,18 @@ export const Footer: React.FC = () => {
             </p>
 
             <div className="flex gap-6 text-gray-500 dark:text-gray-400 text-sm">
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>
+              <button
+                onClick={onOpenPrivacy}
+                className="hover:text-gray-900 dark:hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                Privacy
+              </button>
+              <button
+                onClick={onOpenTerms}
+                className="hover:text-gray-900 dark:hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                Terms
+              </button>
             </div>
           </div>
         </div>

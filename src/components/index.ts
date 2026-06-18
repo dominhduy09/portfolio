@@ -8,3 +8,4 @@ export { Projects } from './Projects';
 export { Skills } from './Skills';
 export { BackToTop } from './BackToTop';
 export { Slideshow } from './Slideshow';
+export { LegalModal } from './LegalModal';

@@ -10,15 +10,21 @@ import { Skills } from './components/Skills';
 import { BackToTop } from './components/BackToTop';
 import { ThemeProvider } from './context/ThemeContext';
 import { NewPortfolio } from './components/NewPortfolio';
+import { LegalModal } from './components/LegalModal';
 
 function App() {
   const [viewVersion, setViewVersion] = useState<'classic' | 'v2'>('classic');
+  const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
 
   return (
     <ThemeProvider>
       <div className="bg-white dark:bg-dark-900 text-gray-900 dark:text-white min-h-screen">
         {viewVersion === 'v2' ? (
-          <NewPortfolio onViewClassic={() => setViewVersion('classic')} />
+          <NewPortfolio
+            onViewClassic={() => setViewVersion('classic')}
+            onOpenPrivacy={() => setActiveModal('privacy')}
+            onOpenTerms={() => setActiveModal('terms')}
+          />
         ) : (
           <>
             <Navigation onViewV2={() => setViewVersion('v2')} />
@@ -28,7 +34,10 @@ function App() {
             <Projects />
             <Experience />
             <Contact />
-            <Footer />
+            <Footer
+              onOpenPrivacy={() => setActiveModal('privacy')}
+              onOpenTerms={() => setActiveModal('terms')}
+            />
             <BackToTop />
             
             {/* Quick floating action to V2 */}
@@ -46,6 +55,12 @@ function App() {
             </div>
           </>
         )}
+
+        <LegalModal
+          isOpen={activeModal !== null}
+          onClose={() => setActiveModal(null)}
+          initialTab={activeModal || 'privacy'}
+        />
       </div>
     </ThemeProvider>
   );
