@@ -70,6 +70,33 @@ export const Projects: React.FC = () => {
       demo: 'https://dmd-portfolio.vercel.app',
       image: '/images/projects/portfolio.png',
     },
+    {
+      id: 7,
+      title: 'PulseCheck — Granola Clinical Note Assistant',
+      description: 'PulseCheck turns raw Granola meeting notes (clinical visits, cardiology follow-ups, etc.) into structured, patient-friendly briefings with ready-to-send follow-up emails, connecting to the Granola API through the Lovable AI Gateway.',
+      tags: ['React 19', 'TanStack Start', 'Vite 7', 'Tailwind CSS v4', 'shadcn/ui', 'TanStack Query', 'Cloudflare Workers'],
+      github: 'https://github.com/dominhduy09/doctor-notes-play',
+      demo: 'https://doctor-notes-play.lovable.app',
+      image: '/images/projects/pulsecheck.png',
+    },
+    {
+      id: 8,
+      title: 'California Housing Insights & Analytics Dashboard',
+      description: 'An interactive, production-grade web application designed to explore California housing market patterns, visualize geographic price distributions, and interface with predictive modeling insights, featuring interactive spatial mapping with Google Maps and dynamic predictive price tooling.',
+      tags: ['React 19', 'Tailwind CSS v4', 'Wouter', 'Recharts', 'Google Maps API', 'Express', 'TypeScript', 'Vite'],
+      github: 'https://github.com/dominhduy09/housing-dashboard',
+      demo: 'https://calihouse-ajya84z9.manus.space/',
+      image: '/images/projects/housing-analysis.png',
+    },
+    {
+      id: 9,
+      title: 'ChainScope — Blockchair Multi-Chain Explorer',
+      description: 'A fast, clean block explorer for browsing blocks, transactions, addresses, and on-chain analytics across 17+ blockchains supported by the Blockchair API, featuring global and per-chain dashboards with smart search capabilities.',
+      tags: ['React 19', 'TanStack Start', 'Vite 7', 'Tailwind CSS v4', 'TanStack Query', 'Cloudflare Workers', 'Supabase'],
+      github: 'https://github.com/dominhduy09/blockchair-explorer-hub',
+      demo: 'https://blockchair-explorer-hub.lovable.app',
+      image: '/images/projects/chainscope.png',
+    },
   ];
 
   const containerVariants = {

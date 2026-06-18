@@ -12,17 +12,17 @@ export const Skills: React.FC = () => {
     },
     {
       title: 'Frontend',
-      skills: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'HTML5', 'CSS3'],
+      skills: ['React 19', 'TypeScript', 'Tailwind CSS v4', 'TanStack Start', 'Recharts', 'HTML5/CSS3'],
       color: 'from-purple-600 to-pink-600',
     },
     {
       title: 'Backend & Databases',
-      skills: ['Node.js', 'Express', 'Firebase', 'MongoDB', 'PostgreSQL', 'REST APIs'],
+      skills: ['Node.js', 'Express', 'Supabase', 'MongoDB', 'PostgreSQL', 'Cloudflare Workers'],
       color: 'from-green-600 to-emerald-600',
     },
     {
       title: 'Tools & Technologies',
-      skills: ['Git', 'Docker', 'Linux', 'VS Code', 'Figma', 'AWS'],
+      skills: ['Git', 'Docker', 'Linux', 'Vite', 'Figma', 'AWS'],
       color: 'from-orange-600 to-red-600',
     },
     {
@@ -116,9 +116,9 @@ export const Skills: React.FC = () => {
 
             <div className="space-y-6">
               {[
-                { name: 'Intermediate-Advanced', items: ['JavaScript', 'React', 'TypeScript', 'Python'] },
-                { name: 'Intermediate', items: ['Java', 'C++', 'Node.js', 'SQL', 'CSS'] },
-                { name: 'Familiar', items: ['Docker', 'AWS', 'MongoDB', 'GraphQL', 'Linux'] },
+                { name: 'Intermediate-Advanced', items: ['React 19', 'Tailwind CSS', 'TypeScript', 'JavaScript', 'Python'] },
+                { name: 'Intermediate', items: ['Java', 'C++', 'Node.js', 'SQL', 'Supabase', 'TanStack Start'] },
+                { name: 'Familiar', items: ['Docker', 'AWS', 'MongoDB', 'Cloudflare Workers', 'Linux'] },
               ].map((level, idx) => (
                 <div key={idx}>
                   <p className="font-semibold text-gray-900 dark:text-white mb-3">{level.name}</p>

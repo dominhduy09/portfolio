@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Terminal, 
-  Cpu, 
-  Database, 
-  Layers, 
-  ArrowLeft, 
-  Sun, 
-  Moon, 
-  Github, 
-  Linkedin, 
-  Mail, 
+import {
+  Terminal,
+  Cpu,
+  Database,
+  Layers,
+  ArrowLeft,
+  Sun,
+  Moon,
+  Github,
+  Linkedin,
+  Mail,
   ExternalLink,
   ChevronRight,
   Play,
@@ -38,10 +38,11 @@ const SKILL_PACKAGES = [
     category: 'core/frontend',
     status: 'ACTIVE',
     skills: [
-      { name: 'React', level: '■■■■■■■■■□ 90%' },
+      { name: 'React 19', level: '■■■■■■■■■□ 90%' },
       { name: 'TypeScript', level: '■■■■■■■■□□ 80%' },
-      { name: 'Tailwind CSS', level: '■■■■■■■■■□ 90%' },
-      { name: 'Framer Motion', level: '■■■■■■■□□□ 70%' }
+      { name: 'Tailwind CSS v4', level: '■■■■■■■■■□ 90%' },
+      { name: 'TanStack Start', level: '■■■■■■■□□□ 70%' },
+      { name: 'Recharts', level: '■■■■■■■■□□ 80%' }
     ]
   },
   {
@@ -51,7 +52,7 @@ const SKILL_PACKAGES = [
       { name: 'Node.js', level: '■■■■■■■■□□ 80%' },
       { name: 'Express', level: '■■■■■■■■□□ 80%' },
       { name: 'REST APIs', level: '■■■■■■■■■□ 90%' },
-      { name: 'GraphQL', level: '■■■■■■□□□□ 60%' }
+      { name: 'Supabase', level: '■■■■■■■□□□ 70%' }
     ]
   },
   {
@@ -60,7 +61,6 @@ const SKILL_PACKAGES = [
     skills: [
       { name: 'PostgreSQL', level: '■■■■■■■□□□ 70%' },
       { name: 'MongoDB', level: '■■■■■■■■□□ 80%' },
-      { name: 'Redis', level: '■■■■■□□□□□ 50%' },
       { name: 'SQL/NoSQL', level: '■■■■■■■■□□ 80%' }
     ]
   },
@@ -70,8 +70,8 @@ const SKILL_PACKAGES = [
     skills: [
       { name: 'Git & GitHub', level: '■■■■■■■■■□ 90%' },
       { name: 'Docker', level: '■■■■■■□□□□ 60%' },
-      { name: 'Vercel / Netlify', level: '■■■■■■■■■□ 90%' },
-      { name: 'CI/CD Pipelines', level: '■■■■■■■□□□ 70%' }
+      { name: 'Cloudflare Workers', level: '■■■■■■■□□□ 70%' },
+      { name: 'Vite', level: '■■■■■■■■□□ 80%' }
     ]
   }
 ];
@@ -79,57 +79,84 @@ const SKILL_PACKAGES = [
 const PROJECT_MANIFESTS = [
   {
     id: 'p1',
-    name: 'ApplyFlow Chrome Extension',
+    name: 'Pomodoro Timer Extension',
     tag: 'EXTENSION',
     build: 'BUILD: SUCCESSFUL',
-    tech: ['TypeScript', 'Chrome API', 'Tailwind', 'Webpack'],
-    description: 'An AI-powered job application helper that automates filling out resumes and questionnaires across platforms.',
-    url: '#'
+    tech: ['HTML5', 'JavaScript', 'CSS', 'Chrome API', 'Service Workers'],
+    description: 'A minimalist Pomodoro timer Chrome Extension running reliably in the background using service workers, with notifications and stats.',
+    url: 'https://github.com/dominhduy09/pomodoro-extension'
   },
   {
     id: 'p2',
-    name: 'Real-time Analytics Engine',
-    tag: 'INFRASTRUCTURE',
+    name: 'Advanced Cookie Manager',
+    tag: 'EXTENSION',
     build: 'BUILD: OPTIMIZED',
-    tech: ['React', 'Node.js', 'Redis', 'Socket.io'],
-    description: 'High-throughput dashboard displaying concurrent user activity, traffic anomalies, and geodata visualization.',
-    url: '#'
+    tech: ['HTML5', 'JavaScript', 'CSS', 'SHA-256', 'Chrome API'],
+    description: 'Manifest V3 Chrome extension that enables developers to securely inspect, edit, and manage browser cookies with encrypted import/export.',
+    url: 'https://github.com/dominhduy09/advanced-cookie-manager'
   },
   {
     id: 'p3',
-    name: 'Smart Document Assistant',
-    tag: 'AI/INTELLIGENCE',
-    build: 'BUILD: ACTIVE',
-    tech: ['React', 'OpenAI API', 'VectorDB', 'Express'],
-    description: 'Semantic search platform that ingests PDFs, parses tables, and generates intelligent contextual summaries.',
-    url: '#'
+    name: 'UVita Sensor Network',
+    tag: 'IOT/HARDWARE',
+    build: 'BUILD: READY',
+    tech: ['HTML5', 'JavaScript', 'CSS', 'C++', 'Arduino', 'IoT'],
+    description: 'Real-time UV monitoring application integrating sensor-enabled phone cases with a mobile app to provide accurate UV index alerts.',
+    url: 'https://github.com/Phong12HexDockwork/UVita/tree/main'
   },
   {
     id: 'p4',
-    name: 'Personal Portfolio Studio',
-    tag: 'INTERFACE',
-    build: 'BUILD: VERSION_2',
-    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
-    description: 'High-fidelity, responsive developer portfolio showing dark/light mode toggle with custom system telemetry theme.',
-    url: '#'
+    name: 'GymFi Blockchain Platform',
+    tag: 'WEB3/LEDGER',
+    build: 'BUILD: DEPLOYED',
+    tech: ['Solana', 'GameFi', 'DeFi', 'React', 'Java'],
+    description: 'A blockchain-enabled fitness platform transforming verified workout achievements into digital rewards on the Solana network.',
+    url: 'https://github.com/dominhduy09/GymFi-Rewarding-Fitness-with-Blockchain'
   },
   {
     id: 'p5',
-    name: 'Decentralized Task Ledger',
-    tag: 'WEB3/LEDGER',
-    build: 'BUILD: LEGACY',
-    tech: ['Solidity', 'Ethers.js', 'Next.js', 'Hardhat'],
-    description: 'A shared task board on local EVM chain supporting reward staking, task claim locks, and verifiable milestone proof.',
-    url: '#'
+    name: 'EXOFOREST Kepler Classifier',
+    tag: 'AI/ML_MODEL',
+    build: 'BUILD: COMPILED',
+    tech: ['Python', 'FastAPI', 'Pandas', 'NumPy', 'Scikit-Learn'],
+    description: 'Machine learning system classifying exoplanet candidates from NASA Kepler and TESS data using a Random Forest model.',
+    url: 'https://github.com/hieupt810/nasa_exoplanets_classification'
   },
   {
     id: 'p6',
-    name: 'Image Processing Pipeline',
-    tag: 'UTILITY',
-    build: 'BUILD: READY',
-    tech: ['Go', 'WebAssembly', 'React', 'HTML5 Canvas'],
-    description: 'WebAssembly tool performing in-browser image filters and kernel convolutions at native near-metal speed.',
-    url: '#'
+    name: 'Systems Lab Studio V2',
+    tag: 'INTERFACE',
+    build: 'BUILD: VERSION_2',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    description: 'High-fidelity, responsive developer portfolio showing dark/light mode toggle with custom system telemetry theme.',
+    url: 'https://github.com/dominhduy09/portfolio'
+  },
+  {
+    id: 'p7',
+    name: 'PulseCheck Assistant',
+    tag: 'HEALTH/AI',
+    build: 'BUILD: SUCCESSFUL',
+    tech: ['React 19', 'TanStack Start', 'Vite 7', 'Tailwind v4', 'Cloudflare'],
+    description: 'Turns raw Granola meeting notes into structured patient briefings and follow-up emails via the Lovable AI Gateway.',
+    url: 'https://github.com/dominhduy09/doctor-notes-play'
+  },
+  {
+    id: 'p8',
+    name: 'California Housing Insights',
+    tag: 'GEOSPATIAL/AI',
+    build: 'BUILD: PRODUCTION',
+    tech: ['React 19', 'Tailwind v4', 'Wouter', 'Recharts', 'Google Maps', 'TypeScript', 'Vite'],
+    description: 'Interactive analytics dashboard visualizing geographic price distributions and predictive housing values.',
+    url: 'https://github.com/dominhduy09/housing-dashboard'
+  },
+  {
+    id: 'p9',
+    name: 'ChainScope Explorer',
+    tag: 'BLOCKCHAIN',
+    build: 'BUILD: SUCCESSFUL',
+    tech: ['React 19', 'TanStack Start', 'Vite 7', 'Tailwind v4', 'Cloudflare', 'Supabase'],
+    description: 'Multi-chain block explorer and analytics hub pulling real-time statistics across 17+ blockchains.',
+    url: 'https://github.com/dominhduy09/blockchair-explorer-hub'
   }
 ];
 
@@ -199,7 +226,7 @@ const SCHEMA_NODES = [
 
 export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => {
   const { isDark, toggleTheme } = useTheme();
-  
+
   // Interactive nodes state
   const [selectedNode, setSelectedNode] = useState(SCHEMA_NODES[0]);
   const [terminalLogs, setTerminalLogs] = useState<string[]>([
@@ -209,7 +236,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
     'GPA 3.88 validated successfully.',
     'Click on any blueprint node below to inspect architecture details.'
   ]);
-  
+
   // Terminal compiler typing effect simulation
   const [compileProgress, setCompileProgress] = useState(0);
   const [isCompiling, setIsCompiling] = useState(false);
@@ -253,7 +280,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
     setIsCompiling(true);
     setCompileProgress(0);
     setTerminalLogs(prev => [...prev, '>> Running diagnostic compiler...']);
-    
+
     const interval = setInterval(() => {
       setCompileProgress(prev => {
         if (prev >= 100) {
@@ -287,7 +314,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
 
     setTimeout(() => {
       setFormLogs(prev => [...prev, '>> Securing connection payload...']);
-      
+
       setTimeout(() => {
         setFormLogs(prev => [
           ...prev,
@@ -305,7 +332,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-mono transition-colors duration-300 blueprint-grid relative">
-      
+
       {/* V2 Header */}
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -315,7 +342,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
               Duy_Do_Minh.sys [v2.0.0]
             </span>
           </div>
-          
+
           <div className="flex items-center gap-4">
             <button
               onClick={onViewClassic}
@@ -337,7 +364,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-8 space-y-12">
-        
+
         {/* HERO SECTION: The System Thesis */}
         <section className="grid lg:grid-cols-12 gap-8 items-start py-6">
           <div className="lg:col-span-6 space-y-6">
@@ -360,7 +387,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
             {/* Quick Specs Grid */}
             <div className="grid grid-cols-2 gap-4">
               {SYSTEM_SPECS.map((spec, index) => (
-                <div 
+                <div
                   key={index}
                   className="p-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded relative overflow-hidden group hover:border-indigo-500 dark:hover:border-indigo-500 transition-all"
                 >
@@ -375,7 +402,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
             </div>
 
             <div className="flex gap-4">
-              <a 
+              <a
                 href="#manifest"
                 className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded text-sm transition-all shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/30 active:scale-95"
               >
@@ -383,7 +410,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                 <ChevronRight size={16} />
               </a>
 
-              <a 
+              <a
                 href="/cv/Minh_Duy_Do_Resume.pdf"
                 download
                 className="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded text-sm transition-all active:scale-95"
@@ -396,7 +423,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
 
           {/* TELEMETRY & SVG DIAGRAM: The Aesthetic Risk */}
           <div className="lg:col-span-6 space-y-4">
-            
+
             {/* The Live Console Panel */}
             <div className="bg-gray-900 dark:bg-gray-950 text-emerald-400 border border-gray-800 rounded overflow-hidden shadow-2xl flex flex-col h-[200px]">
               <div className="bg-gray-850 dark:bg-gray-900/50 px-4 py-2 border-b border-gray-800 flex items-center justify-between text-xs text-gray-400 font-bold">
@@ -416,8 +443,8 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                 ))}
                 {isCompiling && (
                   <div className="w-full bg-gray-800 h-2 rounded mt-2 overflow-hidden border border-gray-700">
-                    <div 
-                      className="bg-emerald-500 h-full transition-all duration-150" 
+                    <div
+                      className="bg-emerald-500 h-full transition-all duration-150"
                       style={{ width: `${compileProgress}%` }}
                     ></div>
                   </div>
@@ -448,48 +475,46 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                   {SCHEMA_NODES.map((node) => {
                     const isSelected = selectedNode.id === node.id;
                     return (
-                      <g 
-                        key={node.id} 
+                      <g
+                        key={node.id}
                         className="cursor-pointer group"
                         onClick={() => handleNodeClick(node)}
                       >
                         {/* Hover ring */}
-                        <circle 
-                          cx={node.x} 
-                          cy={node.y} 
-                          r={isSelected ? 30 : 25} 
-                          fill="transparent" 
-                          stroke={isSelected ? '#FF6B35' : '#4F46E5'} 
-                          strokeWidth="2" 
-                          className="transition-all duration-300 group-hover:r-30" 
+                        <circle
+                          cx={node.x}
+                          cy={node.y}
+                          r={isSelected ? 30 : 25}
+                          fill="transparent"
+                          stroke={isSelected ? '#FF6B35' : '#4F46E5'}
+                          strokeWidth="2"
+                          className="transition-all duration-300 group-hover:r-30"
                         />
                         {/* Center core */}
-                        <circle 
-                          cx={node.x} 
-                          cy={node.y} 
-                          r="16" 
-                          className={`transition-colors duration-300 ${
-                            isSelected ? 'fill-orange-500' : 'fill-indigo-600 dark:fill-indigo-950 group-hover:fill-indigo-500'
-                          }`}
-                          stroke={isSelected ? '#FFFFFF' : '#4F46E5'} 
+                        <circle
+                          cx={node.x}
+                          cy={node.y}
+                          r="16"
+                          className={`transition-colors duration-300 ${isSelected ? 'fill-orange-500' : 'fill-indigo-600 dark:fill-indigo-950 group-hover:fill-indigo-500'
+                            }`}
+                          stroke={isSelected ? '#FFFFFF' : '#4F46E5'}
                           strokeWidth="2"
                         />
-                        
+
                         {/* Node Label Text */}
-                        <text 
-                          x={node.x} 
-                          y={node.y + (isSelected ? 45 : 38)} 
-                          textAnchor="middle" 
-                          className={`text-[9px] font-mono font-bold tracking-wide uppercase transition-colors ${
-                            isSelected ? 'fill-orange-500' : 'fill-gray-600 dark:fill-gray-400 group-hover:fill-gray-900 dark:group-hover:fill-white'
-                          }`}
+                        <text
+                          x={node.x}
+                          y={node.y + (isSelected ? 45 : 38)}
+                          textAnchor="middle"
+                          className={`text-[9px] font-mono font-bold tracking-wide uppercase transition-colors ${isSelected ? 'fill-orange-500' : 'fill-gray-600 dark:fill-gray-400 group-hover:fill-gray-900 dark:group-hover:fill-white'
+                            }`}
                         >
                           {node.name.split(' ')[0]}
                         </text>
                       </g>
                     );
                   })}
-                  
+
                   {/* Central Node labels inside bubbles */}
                   <rect x="250" y="180" width="100" height="40" rx="4" fill="#0A0E17" stroke="#FF6B35" strokeWidth="1.5" />
                   <text x="300" y="205" textAnchor="middle" fill="#FFFFFF" className="text-[10px] font-bold">CORE_ENGINE</text>
@@ -497,7 +522,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
               </div>
 
               {/* Node Inspector Details Box */}
-              <motion.div 
+              <motion.div
                 key={selectedNode.id}
                 initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -515,7 +540,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                   {selectedNode.stats}
                 </div>
               </motion.div>
-              
+
               <div className="mt-3 flex justify-between items-center text-xs">
                 <span className="text-gray-400 dark:text-gray-500">Telemetry diagnosis tools:</span>
                 <button
@@ -536,7 +561,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
           <div className="absolute top-4 right-4 text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">
             skills_compiler.conf
           </div>
-          
+
           <div className="mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
             <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight flex items-center gap-2">
               <Layers size={20} className="text-indigo-500" />
@@ -549,7 +574,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SKILL_PACKAGES.map((pkg, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="border border-gray-250 dark:border-gray-800/80 bg-gray-50/50 dark:bg-gray-950/20 rounded p-4 flex flex-col justify-between hover:border-indigo-500 dark:hover:border-indigo-900 transition-colors"
               >
@@ -589,7 +614,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                 Inventory audit of compiled source codes, browser scripts, and software tools.
               </p>
             </div>
-            
+
             <div className="mt-3 sm:mt-0 text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider font-mono">
               INVENTORY_COUNT: 71_REPOS
             </div>
@@ -597,7 +622,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECT_MANIFESTS.map((project, idx) => (
-              <div 
+              <div
                 key={project.id}
                 className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-indigo-500 dark:hover:border-indigo-500 rounded p-5 flex flex-col justify-between shadow-sm relative overflow-hidden group transition-all duration-300 hover:shadow-md"
               >
@@ -628,8 +653,8 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                 <div className="space-y-3 mt-4 pt-3 border-t border-gray-150 dark:border-gray-850">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((t, tIdx) => (
-                      <span 
-                        key={tIdx} 
+                      <span
+                        key={tIdx}
                         className="text-[9px] font-mono font-bold text-gray-500 dark:text-gray-500"
                       >
                         [{t}]
@@ -643,8 +668,8 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                       <span>ACTIVE_RUNNING</span>
                     </span>
 
-                    <a 
-                      href={project.url} 
+                    <a
+                      href={project.url}
                       className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline inline-flex items-center gap-1"
                     >
                       <span>inspect_src</span>
@@ -662,7 +687,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
           <div className="absolute top-4 right-4 text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">
             execution_pipeline.log
           </div>
-          
+
           <div className="mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
             <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight flex items-center gap-2">
               <Terminal size={20} className="text-indigo-500" />
@@ -678,7 +703,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
               <div key={index} className="relative pl-6 group">
                 {/* Log pipeline pointer indicator */}
                 <div className="absolute left-0 top-1.5 -translate-x-1.5 h-3 w-3 rounded-full border-2 border-indigo-500 bg-white dark:bg-gray-900 group-hover:bg-indigo-500 transition-colors"></div>
-                
+
                 <div className="p-4 bg-gray-50 dark:bg-gray-950/40 border border-gray-200 dark:border-gray-800 rounded hover:border-indigo-500 dark:hover:border-indigo-900 transition-all">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 dark:border-gray-800 pb-2 mb-3">
                     <div className="space-y-1">
@@ -689,7 +714,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                         {log.company}
                       </div>
                     </div>
-                    
+
                     <div className="mt-1 sm:mt-0 text-right space-y-1">
                       <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 uppercase">
                         {log.period}
@@ -716,7 +741,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
 
         {/* SYSTEM INBOUND MAIL GATEWAY [CONTACT] */}
         <section id="contact" className="grid lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Instructions */}
           <div className="lg:col-span-5 space-y-4">
             <h2 className="text-2xl font-display font-bold text-gray-900 dark:text-white uppercase tracking-tight flex items-center gap-2">
@@ -764,7 +789,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                 <label className="block text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
                   guest@duy-lab:~$ enter_email
                 </label>
-                <input 
+                <input
                   type="email"
                   required
                   disabled={isSending || sendSuccess}
@@ -779,7 +804,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                 <label className="block text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">
                   guest@duy-lab:~$ enter_message
                 </label>
-                <textarea 
+                <textarea
                   rows={4}
                   required
                   disabled={isSending || sendSuccess}
@@ -799,7 +824,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
                   <Send size={12} />
                   <span>Execute Send</span>
                 </button>
-                
+
                 {sendSuccess && (
                   <span className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 font-bold">
                     <Check size={14} />
@@ -832,8 +857,8 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({ onViewClassic }) => 
           </div>
           <div className="flex items-center gap-6">
             <span>Lat: 37.7749 / Lng: -122.4194</span>
-            <button 
-              onClick={onViewClassic} 
+            <button
+              onClick={onViewClassic}
               className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline bg-transparent border-none"
             >
               [Return to Classic Version]
