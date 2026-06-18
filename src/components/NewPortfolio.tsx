@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import {
   Terminal,
   Cpu,
@@ -387,7 +388,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
     }, 150);
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!emailInput || !messageInput || isSending) return;
 
@@ -395,25 +396,86 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
     setFormLogs([
       '>> guest@duy-lab:~$ submit_message',
       '>> Connecting to EmailJS mailer service...',
-      '>> Validating parameters...'
+      '>> Validating environment variables...'
     ]);
 
-    setTimeout(() => {
-      setFormLogs(prev => [...prev, '>> Securing connection payload...']);
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+    if (!serviceId || !templateId || !publicKey) {
+      // Fallback: simulate sending logs, then trigger mailto redirection
       setTimeout(() => {
         setFormLogs(prev => [
           ...prev,
-          '>> Service ID: service_ur3d2j6 (Linked)',
-          '>> Sending payload...',
-          '>> SUCCESS: Message dispatched.'
+          '>> WARNING: EmailJS configuration keys are un-configured.',
+          '>> Fallback: Redirecting client mailer...'
         ]);
+        
+        setTimeout(() => {
+          const mailtoUrl = `mailto:dominhduy09@gmail.com?subject=${encodeURIComponent(
+            'Message from V2 Systems Lab Portfolio'
+          )}&body=${encodeURIComponent(
+            `From: ${emailInput}\n\nMessage:\n${messageInput}`
+          )}`;
+          
+          window.location.href = mailtoUrl;
+          setFormLogs(prev => [
+            ...prev,
+            '>> Connection closed. Fallback active.'
+          ]);
+          setIsSending(false);
+          setSendSuccess(true);
+          setEmailInput('');
+          setMessageInput('');
+        }, 1200);
+      }, 800);
+      return;
+    }
+
+    try {
+      setFormLogs(prev => [...prev, '>> Handshaking mail gateway...']);
+      
+      const templateParams = {
+        from_name: 'V2 Telemetry Guest',
+        reply_to: emailInput,
+        subject: 'Message from V2 Systems Lab Portfolio',
+        message: messageInput,
+        time: new Date().toLocaleString()
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setFormLogs(prev => [
+        ...prev,
+        '>> Dispatch payload compiled.',
+        `>> Service ID: ${serviceId.substring(0, 8)}... (Linked)`,
+        '>> Transmitting payload...',
+        '>> SUCCESS: Message dispatched successfully!'
+      ]);
+      setIsSending(false);
+      setSendSuccess(true);
+      setEmailInput('');
+      setMessageInput('');
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setFormLogs(prev => [
+        ...prev,
+        '>> ERROR: Failed to dispatch mail gateway.',
+        '>> Redirecting to local mail client fallback...'
+      ]);
+      
+      setTimeout(() => {
+        const mailtoUrl = `mailto:dominhduy09@gmail.com?subject=${encodeURIComponent(
+          'Message from V2 Systems Lab'
+        )}&body=${encodeURIComponent(
+          `From: ${emailInput}\n\nMessage:\n${messageInput}`
+        )}`;
+        window.location.href = mailtoUrl;
         setIsSending(false);
         setSendSuccess(true);
-        setEmailInput('');
-        setMessageInput('');
       }, 1000);
-    }, 1000);
+    }
   };
 
   return (
