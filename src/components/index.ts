@@ -9,3 +9,5 @@ export { Skills } from './Skills';
 export { BackToTop } from './BackToTop';
 export { Slideshow } from './Slideshow';
 export { LegalModal } from './LegalModal';
+export { Gallery } from './Gallery';
+

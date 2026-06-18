@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                   Home
                 </a>
               </li>
-              {['About', 'Skills', 'Projects', 'Experience'].map(item => (
+              {['About', 'Skills', 'Projects', 'Experience', 'Gallery'].map(item => (
                 <li key={item}>
                   <a href={`#${item.toLowerCase()}`} className="hover:text-gray-900 dark:hover:text-white transition-colors">
                     {item}

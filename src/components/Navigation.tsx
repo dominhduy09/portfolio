@@ -17,6 +17,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onViewV2 }) => {
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Experience', href: '#experience' },
+    { label: 'Gallery', href: '#gallery' },
     { label: 'Contact', href: '#contact' },
   ];
 

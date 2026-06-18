@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Image } from 'lucide-react';
 
 interface SlideshowProps {
   images: string[];
@@ -87,6 +87,14 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, interval = 5000 })
           ))}
         </div>
       )}
+
+      {/* View Gallery Link */}
+      <a
+        href="#gallery"
+        className="absolute bottom-6 right-6 px-4 py-2 rounded-lg bg-black/15 hover:bg-black/25 dark:bg-white/10 dark:hover:bg-white/20 text-gray-800 dark:text-white backdrop-blur-sm transition-all hover:scale-105 active:scale-95 text-xs font-semibold z-20 cursor-pointer flex items-center gap-1.5 font-display border border-black/5 dark:border-white/5 shadow-sm"
+      >
+        <Image size={14} /> See More Images
+      </a>
     </div>
   );
 };

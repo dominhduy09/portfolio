@@ -11,6 +11,7 @@ import { BackToTop } from './components/BackToTop';
 import { ThemeProvider } from './context/ThemeContext';
 import { NewPortfolio } from './components/NewPortfolio';
 import { LegalModal } from './components/LegalModal';
+import { Gallery } from './components/Gallery';
 
 function App() {
   const [viewVersion, setViewVersion] = useState<'classic' | 'v2'>('classic');
@@ -33,6 +34,7 @@ function App() {
             <Skills />
             <Projects />
             <Experience />
+            <Gallery />
             <Contact />
             <Footer
               onOpenPrivacy={() => setActiveModal('privacy')}
