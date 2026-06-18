@@ -125,7 +125,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-dark-900/40 backdrop-blur-[2px] border-b border-gray-200 dark:border-dark-800"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50/50 dark:bg-dark-800/40 backdrop-blur-[2px] border-b border-gray-200 dark:border-dark-800"
     >
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -167,7 +167,7 @@ export const Contact: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ translateX: 5 }}
-                      className="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-dark-800 hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors group"
+                      className="flex items-center gap-4 p-4 rounded-lg bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-700 hover:bg-gray-50 dark:hover:bg-dark-800 transition-colors group"
                     >
                       <div className={`p-3 rounded-lg bg-gradient-to-r ${method.color} text-white group-hover:scale-110 transition-transform`}>
                         <Icon size={24} />
@@ -213,7 +213,7 @@ export const Contact: React.FC = () => {
             {/* Contact Form */}
             <motion.div
               variants={itemVariants}
-              className="p-8 rounded-2xl bg-gray-50 dark:bg-dark-800/40 border border-gray-200 dark:border-dark-700 shadow-sm relative overflow-hidden"
+              className="p-8 rounded-2xl bg-white dark:bg-dark-900 border border-gray-200 dark:border-dark-700 shadow-sm relative overflow-hidden"
             >
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 font-display">Send Me a Message</h3>
 
