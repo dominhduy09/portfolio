@@ -22,8 +22,29 @@ export const Contact: React.FC = () => {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      setStatus('error');
-      setErrorMessage('EmailJS configuration is missing. Please check your environment variables.');
+      // Fallback to mailto link if EmailJS keys are not provided
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        const fromName = (formRef.current?.querySelector('input[name="from_name"]') as HTMLInputElement)?.value || '';
+        const replyTo = (formRef.current?.querySelector('input[name="reply_to"]') as HTMLInputElement)?.value || '';
+        const subject = (formRef.current?.querySelector('input[name="subject"]') as HTMLInputElement)?.value || '';
+        const message = (formRef.current?.querySelector('textarea[name="message"]') as HTMLTextAreaElement)?.value || '';
+        
+        const mailtoUrl = `mailto:dominhduy09@gmail.com?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(
+          `From: ${fromName} (${replyTo})\n\nMessage:\n${message}`
+        )}`;
+        
+        window.location.href = mailtoUrl;
+        setStatus('success');
+        formRef.current?.reset();
+        
+        setTimeout(() => {
+          setStatus('idle');
+        }, 5000);
+      }, 800);
       return;
     }
 
