@@ -31,7 +31,7 @@ export const Projects: React.FC = () => {
       description: 'Advanced Cookie Manager is a modern Manifest V3 Chrome extension that enables developers and power users to securely inspect, edit, and manage browser cookies, with support for encrypted import/export and password protection.',
       tags: ['HTML5', 'JavaScript', 'CSS', 'SHA-256', 'Chrome Extensions API'],
       github: 'https://github.com/dominhduy09/advanced-cookie-manager',
-      demo: 'https://chromewebstore.google.com/?hl=en&authuser=0',
+      demo: 'https://chromewebstore.google.com/detail/pomodoro-timer/pfbdgdohllcpdkfccmekclkpfgfnaghj?authuser=0&hl=en',
       image: '/images/projects/advanced-cookie-manager.png',
     },
     {
