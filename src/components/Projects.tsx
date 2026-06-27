@@ -67,7 +67,7 @@ export const Projects: React.FC = () => {
       description: 'A modern portfolio built with React, TypeScript, and Tailwind, featuring dark mode, animated hero, project cards, and optimized Lighthouse scores.',
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
       github: 'https://github.com/dominhduy09/portfolio',
-      demo: 'https://dmd-portfolio.vercel.app',
+      demo: 'https://portfolio-eta-nine-60.vercel.app/',
       image: '/images/projects/portfolio.png',
     },
     {

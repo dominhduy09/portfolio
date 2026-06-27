@@ -970,7 +970,7 @@ export const NewPortfolio: React.FC<NewPortfolioProps> = ({
               </div>
               <div className="flex items-center gap-2 text-gray-800 dark:text-gray-300">
                 <Linkedin size={12} className="text-indigo-500" />
-                <a href="https://www.linkedin.com/in/duy-do-minh-0b37501a9/" target="_blank" rel="noopener noreferrer" className="hover:underline">linkedin.com/in/duy-do-minh</a>
+                <a href="https://www.linkedin.com/in/duy-do-minh-0b37501a9/" target="_blank" rel="noopener noreferrer" className="hover:underline">linkedin.com/in/duy-do-minh-0b37501a9</a>
               </div>
               <div className="flex items-center gap-2 text-gray-800 dark:text-gray-300">
                 <Github size={12} className="text-indigo-500" />
