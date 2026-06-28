@@ -31,7 +31,7 @@ interface NewPortfolioProps {
 // Concrete data mirroring the portfolio contents
 const SYSTEM_SPECS = [
   { label: 'GPA INDEX', value: '3.88 / 4.00', status: 'HONORS' },
-  { label: 'COMPILED MODULES', value: '71+ PROJECTS', status: 'ACTIVE' },
+  { label: 'COMPILED MODULES', value: '92+ PROJECTS', status: 'ACTIVE' },
   { label: 'RUN TIME EXP', value: '3+ YEARS', status: 'OPTIMIZED' },
   { label: 'SYSTEM CORES', value: 'REACT / TS / AI', status: 'STABLE' }
 ];
@@ -183,7 +183,7 @@ const SYSTEM_LOGS_DB = [
     period: '2024 - PRESENT',
     company: 'GitHub Repositories',
     status: 'CONTINUOUS_INTEGRATION',
-    metrics: ['71+ repos initialized', '1200+ commits', 'Vercel Deployment Specialist']
+    metrics: ['92+ repos initialized', '1200+ commits', 'Vercel Deployment Specialist']
   }
 ];
 

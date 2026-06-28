@@ -23,7 +23,7 @@ export const About: React.FC = () => {
   const statItems = [
     {
       icon: Laptop,
-      value: '71+',
+      value: '92+',
       label: 'Projects Built',
       color: 'blue',
       bg: 'bg-blue-50 dark:bg-blue-900/10',
